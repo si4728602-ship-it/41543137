@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <!-- 4. 響應式網頁設定 (RWD) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作業</title>
+  
+  <!-- 引入 Chart.js 繪製統計圖表 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- 1. CSS 樣式與響應式設計 -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; color: #333; }
+    header { text-align: center; margin-bottom: 20px; }
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap; /* RWD 自動換行 */
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex: 1 1 300px; /* 電腦並排，手機單欄 */
+    }
+
+    /* 2. 媒體響應式大小調整 */
+    img, video, iframe { width: 100%; height: auto; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>網頁</h1>
+  </header>
+
+  <div class="container">
+    <!-- 2. 內嵌照片與影片 -->
+    <div class="card">
+      <h2>照片與影片</h2>
+      <p style="margin: 10px 0;">照片：</p>
+      <img src="https://picsum.photos/600/400" alt="示範圖片">
+      
+      <p style="margin: 10px 0;">影片：</p>
+     <iframe width="1183" height="665" src="https://www.youtube.com/embed/SkkpOftZ3xE?list=RDSkkpOftZ3xE" title="【AMV】偶像學園Stars！ 「夏日熱淚日記」" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <!-- 3. JavaScript 統計圖表 -->
+    <div class="card">
+      <h2>統計圖表</h2>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <!-- 3. JavaScript 圖表繪製 logic -->
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar', // 圖表類型：條狀圖 (bar), 圓餅圖 (pie), 折線圖 (line)
+      data: {
+        labels: ['HTML', 'CSS', 'JavaScript', 'Vue', 'React'],
+        datasets: [{
+          label: '技能熟練度 (%)',
+          data: [85, 80, 70, 60, 50],
+          backgroundColor: '#42b983'
+        }]
+      },
+      options: { responsive: true }
+    });
+  </script>
+
+</body>
+</html>
